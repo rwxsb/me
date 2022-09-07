@@ -1,3 +1,3 @@
 # How to train your dragon?
 
-## you be friends with one first
+## you need to be friends with one first
