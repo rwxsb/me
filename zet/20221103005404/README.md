@@ -1,0 +1,1 @@
+## Favor `Composition` over `Inheritance`
