@@ -10,6 +10,18 @@ Any attempt to build intelligent computer based systems must provide a mechanism
 
 Lotfi A. Zadeh suggested an aprroach for the representation and manipulation of quantified statements based upon the use of fuzzy sets.
 
+> **Fuzzy Sets**
+> A Fuzzy set is a pair (U,m) where U is a set and $$m: U \rightarrow [0,1]$$ a membership function.
+>set U is called universe of discourse, and for each $x \in U$, the value m(x) is called the grade of membership of x in (U,m).
+>Let $x \in U$ then x is called: 
+>
+> **not included** in the Fuzzy set (U,m) if $m(x) = 0$
+>
+>**fully included** if $m(x) = 1$
+>
+>**partially included** if $0 < m(x) < 1$ 
+
+
 - Montague - Contributed to our understanding of proper treatments of quantifiers `all`, `some` and `any`
 - Barwise and Cooper - Described methods for dealing with `generalized quantifiers` exemplified by `most`,   `many`.
 - Zadeh and Others - Described in a series of papers from 1975. Quantifiers above as well as some other quantifiers w/ imprecise meaning `few`, `several`, `not very many` are treated as **`fuzzy numbers`** and referred to as fuzzy quantifiers.
@@ -60,5 +72,4 @@ many, approximately five, close to ten, much larger than ten, u large number, et
 Fuzzy Quantifiers in out daily life appear implicitly rather than explicitly, when it is asserted that:
 - `"Basketball players are very tall"` it is meant `"Almost all basketball players are very tall"`
 - `"Lynne is never late"` it is meant `"Lynne is late very rarely"`.
-
 
