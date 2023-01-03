@@ -73,3 +73,38 @@ Fuzzy Quantifiers in out daily life appear implicitly rather than explicitly, wh
 - `"Basketball players are very tall"` it is meant `"Almost all basketball players are very tall"`
 - `"Lynne is never late"` it is meant `"Lynne is late very rarely"`.
 
+An interesting note about the fuzzy quantifiers should be made regarding the transitive closure.
+$p \equiv  all A's\ are\ B's$ and $q \equiv  all B's\ are\ C's$ then
+$r \equiv  all A's\ are\ C's$ the quantifier `all` in p and q is replace by `almost all`, then the quantifier all in r should be replace by `none-to-all`. Slight change in quantifiers in premises may result in conclusion.
+
+Natural way to dealing with the fuzzy quantifiers is to treat them as fuzzy numbers. However this does not mean that the fuzzy quantifiers exist together with fuzzy number.
+
+In the proposition “Vickie is several years younger than Mary.” `several` - fuzzy number does not play the role of a fuzzy quantifier whereas in "Vickie has several good friends." it does.
+
+“Vickie has several credit cards,” several is a fuzzy characterization of the cardinality of the nonfuzzy set of Vickie’s credit cards; in “Vickie has
+several good friends,” several is a fuzzy characterization of the cardinality of the fuzzy set of Vickie’s good friends;
+
+A Simple example to show how Fuzzy Quantifiers can be treated as Fuzzy numbers
+
+$$ p \equiv  80\% of students\ are\ single$$ 
+$$q \equiv  60\% of students\ are\ male$$ 
+$$r \equiv  Q\ of\ students\ are\ single\ and\ male$$ 
+
+$r$ is the answer to the question "What percentage of students are sinle and male?" Clearly the answer is $80\%x60\%=48\%$ 
+
+We may generalise this in $p \equiv  Q_1\ of\ A's\ are\ B's$ and $q \equiv  Q_2\ of\ (A\ and\ B)'s\ are\ C's$ then $r \equiv  Q_1Q_2\ of\ A's are (B\ and\ C)'s$
+
+Assume $Q_1$ and $Q_2$ are fuzzy quantifiers of second kind - Relative
+$$ p \equiv  most\ of students\ are\ single$$ 
+$$q \equiv  a\ little\ more\ than\ a\ half\ of students\ are\ male$$ 
+$$r \equiv  ?Q\ of\ students\ are\ single\ and\ male$$ 
+
+where the question mark indicates that value of Q to be inferred from $p$ and $q$.
+
+Interpreting most, a little more than a half and Q as fuzzy numbers we can see that Q may be expressed as a product in fuzzy arithmetic $Q = most \otimes a\ little\ more\ than\ a\ half$
+
+>**Intersection/Product Syllogism**
+>
+>We may generalise this in $p \equiv  Q_1\ of\ A's\ are\ B's$ and $q \equiv  Q_2\ of\ (A\ and\ B)'s\ are\ C's$ then $r \equiv  Q_1 \otimes Q_2\ of\ A's are (B\ and\ C)'s$
+
+![Intersection/Product Syllogism](intersection-product-syll.png)
