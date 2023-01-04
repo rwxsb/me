@@ -1,5 +1,6 @@
 ## Fuzzy Quantifiers
 
+### Introduction
 Quantified statements such as 
 
 > "Most students pay their own tuition" or "About half the guests gave presents" 
@@ -108,3 +109,46 @@ Interpreting most, a little more than a half and Q as fuzzy numbers we can see t
 >We may generalise this in $p \equiv  Q_1\ of\ A's\ are\ B's$ and $q \equiv  Q_2\ of\ (A\ and\ B)'s\ are\ C's$ then $r \equiv  Q_1 \otimes Q_2\ of\ A's are (B\ and\ C)'s$
 
 ![Intersection/Product Syllogism](intersection-product-syll.png)
+
+We assumed that Fuzzy Quantifier is a `fuzzy number of type 1`
+
+### Cardinality of Fuzzy Sets
+
+In case of crisp (nonfuzzy) subset, A of a universe discourse, U, the proposition "u is an element of A" is either true or false.
+
+In the case of fuzzy subset, F, of U, the proposition "u is an element of F" is generally true to degree, with result of cardinality admitting to multiple definitions. 
+- Associate with F a real number then result of cardinality is nonfuzzy
+- Associate with F a fuzzy number since it is argued cardinality of fuzzy set should be a fuzzy number
+
+In a Finite Universe a fuzzy subset F, of $U = {u_1, ... , u_n}$ may be expressed symbolically as 
+$$ F = \mu_1u_1 + ... + \mu_nu_n $$
+where for $\mu_iu_i$ $i = 1,..,n$ and $\mu_i$ is the grade of membership of $u_i$ in F and plus sign is union.
+
+#### Nonfuzzy cardinality
+We may simply extend the concept of cardinality by forming the `sigma count`.
+
+>**Sigma Count**
+>$$ \sum Count(F) \equiv \sum_i \mu_i$$ 
+>where $i = 1...n$
+>
+> We may put a certain threshold to exlude the members whos grades membership falls below. The purpose of such an exclusion is to
+avoid a situation in which a large number of terms with low grades of membership become count-equivalent to a small number of terms with high membership.
+
+We may illustrate the concept of sigma count with below example, Assume that the fuzzy set of close friends of Terssa is expressed as 
+$$ F = 1Enrique + 0.8 Ramon + 0.7 Elie + 0.9 Sergei + 0.8 Ron$$
+In this case $\sum Count(F) = 1 + 0.8 + 0.7 +0.9 + 0.8 = 4.2$
+
+>**Weighted Sigma Count**
+>
+>Sigma count could be weighted, in the sense that if $w = (w_1,...,w_n)$ is an n-tuple of non-negative real numbers, then below is called the weighted sigma count of F wrt w
+>$$\sum Count(F;w) \equiv \sum_iw_i\mu_i$$
+>where $i = 1...n$
+>
+>This definition implies that $\sum Count(F;w)$ may be interpreted as the sigma-count of a fuzzy
+multiset ‘F in which the grade of membership and the multiplicity of $u_i, i = 1,. . . n$ are,
+respectively, $\mu_i\ and\ w_i$
+
+Above definitions hold for the assumption that cardinality of a fuzzy set is a real number
+
+#### Fuzzy Cardinality
+
