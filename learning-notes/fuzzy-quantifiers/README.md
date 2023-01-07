@@ -12,15 +12,15 @@ Any attempt to build intelligent computer based systems must provide a mechanism
 Lotfi A. Zadeh suggested an aprroach for the representation and manipulation of quantified statements based upon the use of fuzzy sets.
 
 > **Fuzzy Sets**
-> A Fuzzy set is a pair (U,m) where U is a set and $$m: U \rightarrow [0,1]$$ a membership function.
->set U is called universe of discourse, and for each $x \in U$, the value m(x) is called the grade of membership of x in (U,m).
+> A Fuzzy set is a pair (U,m) where U is a set and $$\mu: U \rightarrow [0,1]$$ a membership function.
+>set U is called universe of discourse, and for each $x \in U$, the value $\mu(x)$ is called the grade of membership of x in (U,$\mu$).
 >Let $x \in U$ then x is called: 
 >
-> **not included** in the Fuzzy set (U,m) if $m(x) = 0$
+> **not included** in the Fuzzy set (U,$\mu$) if $\mu(x) = 0$
 >
->**fully included** if $m(x) = 1$
+>**fully included** if $\mu(x) = 1$
 >
->**partially included** if $0 < m(x) < 1$ 
+>**partially included** if $0 < \mu(x) < 1$ 
 
 
 - Montague - Contributed to our understanding of proper treatments of quantifiers `all`, `some` and `any`
@@ -128,13 +128,15 @@ where for $\mu_iu_i$ $i = 1,..,n$ and $\mu_i$ is the grade of membership of $u_i
 We may simply extend the concept of cardinality by forming the `sigma count`.
 
 >**Sigma Count**
+>
 >$$ \sum Count(F) \equiv \sum_i \mu_i$$ 
 >where $i = 1...n$
 >
 > We may put a certain threshold to exlude the members whos grades membership falls below. The purpose of such an exclusion is to
 avoid a situation in which a large number of terms with low grades of membership become count-equivalent to a small number of terms with high membership.
 
-We may illustrate the concept of sigma count with below example, Assume that the fuzzy set of close friends of Terssa is expressed as 
+We may illustrate the concept of sigma count with below example, Assume that the fuzzy set of close friends of Teressa is expressed as 
+
 $$ F = 1Enrique + 0.8 Ramon + 0.7 Elie + 0.9 Sergei + 0.8 Ron$$
 In this case $\sum Count(F) = 1 + 0.8 + 0.7 +0.9 + 0.8 = 4.2$
 
@@ -151,4 +153,61 @@ respectively, $\mu_i\ and\ w_i$
 Above definitions hold for the assumption that cardinality of a fuzzy set is a real number
 
 #### Fuzzy Cardinality
+If we assume that cardinality of a fuzzy set is a fuzzy number we may begin our discussion by representing F with its level sets
+
+$$ F = \sum_\alpha  \alpha F_\alpha $$
+
+in which $\alpha-level-sets$ $F_\alpha$ are non-fuzzy sets defined by
+
+$$ F_\alpha = \{u | \mu_F(u) \geq \alpha \}\ where\ 1 \geq \alpha > 0$$
+
+Based on this assumption there are three FCounts:
+- FGCount
+- FLCount
+- FECount
+
+We may define the above counts using the membership function $\mu$ of a Fuzzy set $let\ i = 0,1,...,n$ then:
+
+>**FGCount(F)**
+>
+>$$\mu_{FGCount(F)}(i) \equiv \sup_{\alpha} \{\alpha | Count(F_\alpha) \geq i \} $$
+
+>**FLCount(F)**
+>
+>$$\mu_{FLCount(F)}(i) \equiv \sup_{\alpha} \{\alpha | Count(F_\alpha) \geq n - i \} $$
+
+>**FECount(F)**
+>
+>$$\mu_{FECount(F)}(i) \equiv Min(\mu_{FLCount(F)}(i) , \mu_{FLCount(F)}(i)) $$
+
+Consider the example:
+Let $F = 0.6u_1 + 0.9u_2 + 1u_3 + 0.7u_4 + 0.3u_5$ by the definition of $F_\alpha$ we may say that 
+
+$$ F = 1(u_3) + 0.9(u_2 + u_3) + 0.7(u_2 + u_3 + u_4) + 0.6(u_1 + u_2 + u_3 + u_4) + 0.3(u_1 + u_2 + u_3 + u_4 + u_5)$$
+
+so we have 
+
+$$ FG Count(F) = 1|0 + 1|1 + 0.9|2 + 0.7|3 + 0.6|4 + 0.3|5 $$
+$$ FL Count(F) = 0.1|2 + 0.3|3 + 0.4 | 4 + 0.7|5 + 1|6 + ... \Theta 1 \\ = 0.1|1 + ...$$
+$$ FE Count(F) = 0.1|1 + 0.3|2 + 0.4|3 + 0.6|4 + 0.3|5 $$
+
+where $\sum Count(F) = 0.6 + 0.9 + 1.0 + 0.7 + 0.3 = 3.5$
+
+
+#### Relative count
+A type of count that plays important role in representation of realtive count (or relative cardinality) is relative sigma count
+
+>**Relative Sigma Count**
+>
+>$$\sum Count(F/G) = \frac{\sum Count(F \cap G)}{\sum Count(G)}$$
+> represents the proportion of elements of F which are in G
+
+>**$ F \cap G$**
+>
+>$$ \mu_{F \cap G}(u) = \mu_F(u) \land \mu_G(u)$$
+
+Observe that $\sum Count(F/G) = Prop(G/F)$
+
+#### Fuzzy Quantifiers and Cardinality of Fuzzy Sets
+
 
