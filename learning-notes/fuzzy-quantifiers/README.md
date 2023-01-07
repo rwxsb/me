@@ -1,4 +1,6 @@
-## Fuzzy Quantifiers
+# Fuzzy Quantifiers
+
+## A Computational Approach To Fuzzy Quantifiers in Natural Languages
 
 ### Introduction
 Quantified statements such as 
@@ -208,6 +210,41 @@ A type of count that plays important role in representation of realtive count (o
 
 Observe that $\sum Count(F/G) = Prop(G/F)$
 
-#### Fuzzy Quantifiers and Cardinality of Fuzzy Sets
+## Reasoning with Fuzzy Quantified Statements
+
+>**Definition**
+>
+>A linguistic (fuzzy) quantifier of the first kind is a value such as "about 5", "at least one", "more than 10" indicating the absolute quantity can be represented as a fuzzy subset of $Q_1$ or non-negative real numbers, r, $Q_1(r)$ measures the deree to which r satisfies the concept of $Q_1$
+
+>**Definition**
+>
+>A linguistic (or fuzzy) quantifier of second kind is a value such as, "almost all", "about 50%", "nearly a third" indicating a relative or proportional quantity. A quantifier of the second kind can be represented as a fuzzy subset $Q_2$ of the unit internal I, such that for each $r \in T, Q_2(r)$ measures the degree to which r satisfies the concept of $Q_2$
+
+Linquistic quantifiers appear often in natural language statements. We have below the three prototypical usages
+
+(1) "There are about seven tall people" is an example of the quantified statement of the form
+$$There\ are\ Q_1\ T's$$
+where $Q_1$ - _about seven_ - is a kind one quantifier and $T$ - _tall_ - fuzzy subset of elements. 
+
+
+
+#### Validating Quantified statements from given sets
+
+There are various types of problems dealing with quantifiers in this section we will deal with the first type.
+
+Given a fuzzy set of elements A and we desire to find the truth about some quantified statement about A.
+
+Given the heights of a group of people and we are asked how true is the statement "Most people of this group are tall?"
+
+In such class of problems given fuzzy subsets act as our database of knowledge, from which we are interested in inferring the validity of some proposition. Assume that A and B are known fuzzy subsets of X, and consider statement There are $Q_1\ A's$
+
+
+
+
+
+
+
+
+
 
 
