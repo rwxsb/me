@@ -222,13 +222,80 @@ Observe that $\sum Count(F/G) = Prop(G/F)$
 
 Linquistic quantifiers appear often in natural language statements. We have below the three prototypical usages
 
-(1) "There are about seven tall people" is an example of the quantified statement of the form
+**(1)** "There are about seven tall people" is an example of the quantified statement of the form
 $$There\ are\ Q_1\ T's$$
 where $Q_1$ - _about seven_ - is a kind one quantifier and $T$ - _tall_ - fuzzy subset of elements. 
 
+**(2)** "About seven fat people are tall" this is quantified statement of the form
+$$Q_1F's\ are\ T$$
+where $Q_1$ is kind one quantifier, F and T are fuzzy subsets of some base set X.
+
+**(3)** "Most fat people are tall" this is quantified statement of the form
+$$Q_2F's\ are\ T$$
+where $Q_2$ - *most* - is kind two quantifier,  F and T are fuzzy subsets of some base set X.
+
+We have different methods for interpreting these three types of statements
+
+**(1)** There are $Q_1$ A's can be interpret as being equivalent to $Count\ of\ A\ is\ Q_1$ or $\sum Count(A)\ is\ Q_1$ 
+
+**(2)** The statement 
+$$Q_1A's\ are\ B$$ 
+can be interpreted as being equivalent to the Count of (A and B) is $Q_1$ or $\sum Count(A \cap B)$ is $Q_1$.
+
+**(3)** The statement
+$$Q_2A's\ are\ B$$
+can be interpreted as equivalent to the proportion $\sum Count(B/A) $ plays the role variable taking value $Q$
+
+>**Definition**
+>
+>1. Assume V is a variable taking values in the set X. Let A be a value representable as fuzzy subset of X. A fuzzy proposition is a statement of the form
+> $$V\ is\ A$$
+>
+>2. Such proposition of type has effect of inducing a `possibility distribution` $\pi$ on $V$ defined over X.
+> $$\pi_V(x) = A(x)\ or\ \pi_V = A$$
+>
+>3. The truth of the proposition $V$ is $A$ (hypothesis) given the fact that $V$ is $B$ (reference) is defined as $\tau_{A/B}$
+> $$ \tau_{A/B} = \cup_{x \in X}\{\frac{B(x)}{A(x)} \}$$ 
+>4. In general $\tau_{A/B}$ is a fuzzy subset of [0,1], however in the special case $B=\{a\}$
+> $$ \tau_{A/B} = \cup_{x \in X}\{\frac{1}{A(x)} \} = A(a) = \pi_\tau (a)$$ 
+>5. The possibility of V is A given V is B is defined as 
+>$$ Poss[V = A/V = B] = \pi_{A/B} = max_{x \in X}[A(x) \land B(x)] \\ 
+for\ special\ case\ where\ B = \{a\}\\ \pi_{A/B} = \tau_{A/B} = A(a)$$
+>
+>6. The certainty of V is A given V is B is defined as 
+>$$Cert[A/B] = 1 - Pos[\bar{A}/B] \\ where \bar{A} = 1 - A(x)$$
+
+By above definition we may restate our cases
+
+**(1)** Is a possibility distribution defined over non-negative reals such that 
+$$\pi_{\sum Count(A)}^{(y)} = Q_1(y)$$
+
+**(2)** Is a possibility distribution defined over non-negative reals such that 
+$$\pi_{\sum Count(A \in B)}^{(y)} = Q_1(y)$$
+
+**(3)** Is a possibility distribution defined over the unit interval
+$$\pi_{\sum Count(A / B)}^{(y)} = Q_2(y)$$
+
+In Summary we may say that
+
+$$There\ are\ Q_1\ A's \implies \pi_{\sum Count(A)} = Q_1 $$
+$$Q_1\ A's\ are\ B \implies \pi_{\sum Count(A \cap B)} = Q_1 $$
+$$Q_2\ A's\ are\ B \implies \pi_{Prop(B/A)} = Q_2 $$
+
+Also it is work to note that 
+
+$$\sum Count(A) = \sum_{i=1}^{n} A(xi)$$
+
+$$\sum Count(A \cap B) = \sum_{i=1}^{n} A(xi) \land B(xi)$$
+
+$$Prop(B/A) = \frac{\sum Count(A \cap B)}{\sum Count(A)}$$
 
 
-#### Validating Quantified statements from given sets
+
+
+
+
+### Validating Quantified statements from given sets
 
 There are various types of problems dealing with quantifiers in this section we will deal with the first type.
 
@@ -241,7 +308,7 @@ In such class of problems given fuzzy subsets act as our database of knowledge, 
 
 
 
-
+ 
 
 
 
