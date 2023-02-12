@@ -6,7 +6,7 @@
 >different languages to a certain extent, it isn't that common."
 >- _Martin Fowler_
 
-#decentralized-governance, #microservices
+#decentralized-governance, #microservices, #fowler
 
 references:
 - https://martinfowler.com/articles/microservices.html
