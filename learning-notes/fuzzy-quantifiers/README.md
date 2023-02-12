@@ -292,9 +292,6 @@ $$Prop(B/A) = \frac{\sum Count(A \cap B)}{\sum Count(A)}$$
 
 
 
-
-
-
 ### Validating Quantified statements from given sets
 
 There are various types of problems dealing with quantifiers in this section we will deal with the first type.
