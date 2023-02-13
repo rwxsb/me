@@ -86,7 +86,7 @@ _**Core components:**_
 - `Data sources` - way to query information from a provider, asking for information to use in configuration, Associated with `Provider`.
 
 _Terraform uses block syntax_
-```terraform
+```tf
 block_type "label" "name_label" {
     key = "value
     nested_block {
@@ -96,7 +96,7 @@ block_type "label" "name_label" {
 ```
 
 _Example creating an EC2 instance in AWS_
-```terraform
+```tf
 resource "aws_instance" "web_server" {
     name = "web-server"
     ebs_volume {
@@ -109,7 +109,7 @@ resource "aws_instance" "web_server" {
 
 - To start let's look at the `main.tf` file at [https://github.com/ned1313/Getting-Started-Terraform/blob/main/base_web_app/main.tf](https://github.com/ned1313/Getting-Started-Terraform/blob/main/base_web_app/main.tf)
   
-```
+```tf
 ##################################################################################
 # PROVIDERS
 ##################################################################################
@@ -125,7 +125,7 @@ provider "aws" {
 
 ---
 
-```
+```tf
 ##################################################################################
 # DATA
 ##################################################################################
@@ -136,7 +136,7 @@ data "aws_ssm_parameter" "ami" {
 ```
 > We are specifying our `Data source`,  `"aws_ssm_parameter"` stands for service manager with given name `"ami"`, key `name` is path to Amazon Linux to AMI ID for the current region.
 ---
-```
+```tf
 ##################################################################################
 # RESOURCES
 ##################################################################################
@@ -165,7 +165,7 @@ resource "aws_subnet" "subnet1" {
 > - Then creating an `"aws_internet_gateway"` with name `"igw"` this uses `aws_vpc.vpc.id`
 > - Then creating a subnet.
 
-```
+```tf
 # ROUTING #
 resource "aws_route_table" "rtb" {
   vpc_id = aws_vpc.vpc.id
@@ -185,7 +185,7 @@ resource "aws_route_table_association" "rta-subnet1" {
 > This allows inbound and outbound traffic to go through the Gateway.
 > then are able to associate route table with subnet.
 
-```
+```tf
 # SECURITY GROUPS #
 # Nginx security group 
 resource "aws_security_group" "nginx-sg" {
@@ -209,4 +209,35 @@ resource "aws_security_group" "nginx-sg" {
   }
 }
 ```
+
+```tf
+# INSTANCES #
+resource "aws_instance" "nginx1" {
+  ami                    = nonsensitive(data.aws_ssm_parameter.ami.value)
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.subnet1.id
+  vpc_security_group_ids = [aws_security_group.nginx-sg.id]
+
+  user_data = <<EOF
+#! /bin/bash
+sudo amazon-linux-extras install -y nginx1
+sudo service nginx start
+sudo rm /usr/share/nginx/html/index.html
+echo '<html><head><title>Taco Team Server</title></head><body style=\"background-color:#1F778D\"><p style=\"text-align: center;\"><span style=\"color:#FFFFFF;\"><span style=\"font-size:28px;\">You did it! Have a &#127790;</span></span></p></body></html>' | sudo tee /usr/share/nginx/html/index.html
+EOF
+
+}
+```
+> An EC2 instance running nginx with html page specified
+
+## Workflow
+- `$> terraform init` looks for configuration files in current directory, examines if there is a need for any provider plugins. If needed those plugins will be fetched from registries and state data will be outputed to the current dir or to the specified API state data back end.
+
+- `$> terraform plan` Terraform will look at the current configuration and the state data contents, determine differences and make a plan to update our target env. to match the desired plan. Will print and usefull to look at
+
+- `$> terraform apply` **WILL RUN THE PLAN** be careful with this one. Applies the plan and changes the state data.
+
+- `$> terraform destroy` **WILL DESTROY EVERYTHING IN TARGET ENV** be careful with this one. *Here there be dragons* 
+
+## Variables
 
