@@ -113,3 +113,18 @@ Volumes are way to inject different things inside containers, how?
 `docker run -p 8080:80 -v $(pwd):/usr/share/nginx/html nginx:alpine` is mounting current directory by `pwd` to nginx directory which has default html content, and serving custom html docs.
 
 This may get complicated in ways that we are able to write to network locations.
+
+## Communication
+
+When we have multiple containers that need to talk to each other we may create a `bridge network`.
+
+We may check documentation network drivers.
+
+`docker network create --driver <driver_type> <network_name>` is used to create network for more information `docker network -h`
+
+We may add any container into a network while running by adding the `--net=<name_of_network>` when running the container. `--name` becomes important in this case because this is simply the name of the host, for API and DB connection this is important.
+
+Such network could be created using `docker-compose` in declarative way.
+
+
+
