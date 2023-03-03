@@ -80,11 +80,36 @@ When running a base image like Node or ASP.NET, it is important to specify the `
 
 `COPY` instruction takes two arguments in case of `COPY . .` first dot represents execution directory and second dot represents path specififed in `WORKDIR`.
 
-`EXPOSE` is port that will be exposed outside the container.
+`EXPOSE` is port that will be exposed outside the container. This also should be the Internal port when running the container with `-p`
+flag.
 
 `ENTRYPOINT` tells what should be run to start the application.
 
+- `docker rm` and `docker rmi` are different in first one removes containers latter one removes the images. One may also write `docker image/container rm`. 
+
 > **Note**
 >
-> Keep in mind that not specifying .dockerignore might cause long build time due to copying of node_modules or other similar directories that contain packages.
+> Keep in mind that not specifying `.dockerignore` might cause long build time due to copying of `node_modules` or other similar directories that contain packages.
 
+> **Tip**
+>
+> VS Code Docker extension is very useful in providing intelisense for docker files and more...
+
+> **Tip**
+>
+> Tagging an image with the latest all the time is not the best idea, we rather prefer to have some differences between versions.
+
+Using `docker logs` we may look at the container logs.
+
+Logs is an important idea for running containers, We may create a volum mount that is in the host. This will allow logs to be outputed there.
+
+Similarly we may keep them in container. In case a crash this will 
+be of no use.
+
+`-v` tag to specify volume while running the container. 
+
+Volumes are way to inject different things inside containers, how?
+
+`docker run -p 8080:80 -v $(pwd):/usr/share/nginx/html nginx:alpine` is mounting current directory by `pwd` to nginx directory which has default html content, and serving custom html docs.
+
+This may get complicated in ways that we are able to write to network locations.
