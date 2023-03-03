@@ -5,6 +5,8 @@
 
 - labs.play-with-docker.com provides 4 hour docker instances.
 
+Docker helps with environment consistency.
+
 ## Introduction
 
 Docker is language agnostic, meaning any language or package is good to go with docker. It does not care about the it.
@@ -18,6 +20,8 @@ Any application might specify the port it listens hence we should be careful bin
 > *Image vs Container*
 >
 >Images are buildtime constructs and containers are runtime constructs. Hence an image makes a VM template.
+
+An image of a container has a layered file system, such as a stack of books and every book is different part of a story.
 
 `$ sudo docker container run -d --name web -p 8080:8080 sbecerek/container:latest`
 
@@ -64,3 +68,23 @@ Running at swarm mode enables the `docker service`s. We may deploy apps and achi
 There is a reconciliation loop in the cluster that checks if observed state is matching the desired state, in a case we want 10 instances and observed state sees 7 instances it launches new containers.
 
 - Swarm or Cluster does not support building apps on the deploy time. We may use `docker stack` command to deploy our docker compose file.
+
+## Dockerfiles
+Always the first instruction we define in a docker file is `FROM` (`FROM node:alpine`) instruction.
+
+Next instruction could be metadate with `LABEL` instruction.
+
+We can also define environment variables with `ENV`.
+
+When running a base image like Node or ASP.NET, it is important to specify the `WORKDIR` this is the directory our code lives in.
+
+`COPY` instruction takes two arguments in case of `COPY . .` first dot represents execution directory and second dot represents path specififed in `WORKDIR`.
+
+`EXPOSE` is port that will be exposed outside the container.
+
+`ENTRYPOINT` tells what should be run to start the application.
+
+> **Note**
+>
+> Keep in mind that not specifying .dockerignore might cause long build time due to copying of node_modules or other similar directories that contain packages.
+
