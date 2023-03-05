@@ -49,12 +49,6 @@ Unless we `rm` the container it is there to be removed.
 >
 > Allows independently scaling, patching and modifying a single part.
 
->*Docker Compose*
->
->*Declarative*
->Describing the desired state of your application in a config file that you use to deploy and manage the app
-> 
->A docker compose config file is such a file that does this.
 
 >*Docker Swarm Cluster* 
 >
@@ -126,5 +120,33 @@ We may add any container into a network while running by adding the `--net=<name
 
 Such network could be created using `docker-compose` in declarative way.
 
+## Docker Compose
+
+>*Docker Compose*
+>
+>*Declarative*
+>Describing the desired state of your application in a config file that you use to deploy and manage the app
+> 
+>A docker compose config file is such a file that does this.
+
+Docker compose will manage lifecycle of the application from building images to orchestrating them.
+with single command we can:
+- Build Services (`docker-compose build`)
+- Start Up Services (`docker-compose up`)
+- Tear Down Services (`docker-compose down`)
+
+Docker Compose files use YAML which are composed of `maps` and `lists`. First thing in a docker-compose file should be `version` this defines the syntax schema.
+
+`services` are the container we would like to run. We may also define `networks` for container communications.
+
+Here are some key `service` properties:
+- build - build properties
+- environment - environment properties, could be ENV variables
+- image 
+- networks - network specifications
+- ports - port mapping
+- volumes - volume mounting
+
+`docker-compose down` will also remove the containers that were created, Images will remain.
 
 
