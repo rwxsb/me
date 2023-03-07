@@ -121,6 +121,7 @@ We may add any container into a network while running by adding the `--net=<name
 Such network could be created using `docker-compose` in declarative way.
 
 ## Docker Compose
+*This is the beginning to the K8s story*
 
 >*Docker Compose*
 >
@@ -137,16 +138,23 @@ with single command we can:
 
 Docker Compose files use YAML which are composed of `maps` and `lists`. First thing in a docker-compose file should be `version` this defines the syntax schema.
 
-`services` are the container we would like to run. We may also define `networks` for container communications.
+`services` are the containers we would like to run. We may also define `networks` for container communications.
 
 Here are some key `service` properties:
 - build - build properties
-- environment - environment properties, could be ENV variables
-- image 
+    
+    - context - directory for service with dockerfile
+    - dockerfile - incase different name is used for dockerfile
+    - args - build arguments or environment variables 
+- environment - runtime environment properties, could be ENV variables
+- env - enviroment options supports files
+- image - image name and tag 
 - networks - network specifications
 - ports - port mapping
 - volumes - volume mounting
 
+We may refer environment variables in our docker file `${my_var}`, this may be used to set different configuration for deployment environments.
+
 `docker-compose down` will also remove the containers that were created, Images will remain.
 
-
+We are able to push multiple images to a registry using `docker-compose push [service...]`. It will push all the services together.
