@@ -158,3 +158,75 @@ We may refer environment variables in our docker file `${my_var}`, this may be u
 `docker-compose down` will also remove the containers that were created, Images will remain.
 
 We are able to push multiple images to a registry using `docker-compose push [service...]`. It will push all the services together.
+
+*Now we will look in depth above properties*
+
+### Orchestration
+This section talks about "Starting up services" part of the docker compose.
+
+We may have A database that APIs depend on and a Presentation App (Client) that depends on the APIs, compose allows orchestration of all these resources via the declarative syntax.
+
+Includes:
+- ports
+- volumes
+- environment
+- networks
+
+A service defined in compose file can have multiple ports specified with `ports` key it is better practice to put list objects in quotes 
+```yml
+ports:
+  - "3000:3000"
+```
+
+Volumes as we discussed before a way to mount files in to docker image, Another key point to volumes is that its importance when containarizing a database in case the container shuts down unexpectedly it will cause loss of data.
+```yml
+volumes:
+  - ./logs:/var/www/logs
+```
+
+Environment variables are important to have different versions of the an application hosted.
+```yml
+environment:
+  - ENV=production
+  - VERSION=1.0
+```
+In case we have a lot of Environment variables these are usually stored in .env files, we may specify whole file.
+```yml
+env_file:
+  - ./common.env
+  - ./settings.env
+```
+
+Thinking about the example we have given before for our services to communicate we need a network.
+```yml
+services:
+  myservice:
+      .
+      .
+      .
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bride
+```
+
+`depends_on` could be used in docker compose file to declare dependencies, It some cases it will be useful to start DB before app. 
+
+Main commands to know about the containers are `docker-compose up` and `docker-compose down` adding `-h` flag to it could improve the efficiency of work greatly.
+
+`docker-compose logs [...services]` allows to view logs for a specified services or whole composed apps even if they are borught up with -d switch.
+
+`docker-compose exec <serviceName> <shell>` will allow viewing logs for a service.
+
+`--scale` allows scaling a service however we need to modify the ports mapping since we will have multiple container one-to-one mapping will not work 
+```
+ports:
+  - "3000"
+```
+Will work.
+
+We also can't use container_name property. Declaratively we may scale container using the `deploy` property of a service.
+
+
