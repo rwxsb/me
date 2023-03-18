@@ -1,7 +1,7 @@
 ## Slices on Go
 In Go slice retains the underlying array, this is particularly interesting. We are able to shrink then extend a slice.
 
-```
+```go
 s := []int{2, 3, 5, 7, 11, 13}
 printSlice(s)
 
