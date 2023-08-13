@@ -1,9 +1,15 @@
-# Docker
+# [Docker](https://www.docker.com/)
+
+Docker is a `container runtime`, a  `container runtime` is a software that is designed to implement and run support containers.
+
+There are also other container runtimes:
+- [containerd](https://containerd.io/) lacks some features of docker however when paired with kubernetes it is a good choice.
+- 
 >Why should I learn docker after all this is mostly done by OPS people.
 > 
 > *The best developers understand ops and The best ops understand developers.*
 
-- labs.play-with-docker.com provides 4 hour docker instances.
+- [labs.play-with-docker.com](labs.play-with-docker.com) provides 4 hour docker instances.
 
 Docker helps with environment consistency.
 
